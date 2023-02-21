@@ -1,0 +1,26 @@
+<%- include('./partials/header.ejs') %>  
+<%# lnl rfrence nt wrkin %>
+<body>
+    <link rel="stylesheet" type="text/css" href="/style.css" media="all" />
+    <style>
+      body{
+          padding-top: 65px;
+      }
+      </style>
+    <h4> These are the ones left with us:</h4>
+    <div class="album py-5 bg-light">
+        <div class="container">
+            <div class="row">
+                <% for( let index = 0; index < picdata.length; index++ ) { %>
+                    <div class="col-md-4">
+                        <div>
+                            <img src=" <%=picdata[index].urls.raw %> " style = "width: 286px; height: 180px;"/>
+                        </div>                    
+                    </div>
+                <% } %>
+            </div>
+        </div>
+    </div>
+
+  </body>
+</html>
