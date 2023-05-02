@@ -1,0 +1,65 @@
+<%- include('./partials/header.ejs') %>  
+<%# lnl rfrence nt wrkin %>
+  <body>
+    <h1>
+      Adding to your own preference
+    </h1>
+
+      <link rel="stylesheet" href="style.css">
+      <style>
+        body{
+            padding-top: 65px;
+            padding-left: 400px;
+            padding-right: 400px;
+            padding-bottom: 65px;
+            align-items: center;
+
+        }
+        </style>
+
+    </body>
+    <form action="add.ejs", method="post">
+      <style>
+        
+      </style>
+
+        <div class="form-group">
+          <label for="exampleInputEmail1"> </label>
+          <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Game Name" name="title">
+
+        </div>
+        <div class="form-group">
+          <label for="exampleInputEmail1"> </label>
+
+            <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Creator's Name" name="creator">
+            
+          </div>
+          <div class="form-group">
+            <label for="exampleInputEmail1"><br>Size</label>
+            <input type="number" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="width" name="width">
+            <input type="number" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="height" name="height" >          
+          </div>
+          <div class="form-group">
+            <label for="exampleInputEmail1"> </label>
+  
+              <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Thumbnail" name="thumbnail">
+              
+            </div>        
+            <div class="form-group">
+              <label for="exampleInputEmail1"> </label>
+    
+                <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="FileName" name="filename">
+                
+              </div>         
+       <!---   <div class="form-group">
+            <label for="exampleInputEmail1"><br>GameFile</label>
+            <input type="file" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Game File" name="gamefile">
+          </div>       -->  
+          <br>
+        <div> 
+          <label for="example"></label>
+          <button type="submit" class="btn btn-primary" >Submit </button>
+        </div>
+      </form>
+
+</html>

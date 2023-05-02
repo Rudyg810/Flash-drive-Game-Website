@@ -2,8 +2,10 @@ const express = require("express");
 var catme = require('cat-me');
 const ejs = require("ejs");
 const request = require("request");
-const { json } = require("express");
+const bodyparser = require("body-parser");
 const app = express();
+app.use(bodyparser.urlencoded({extended: true}));
+console.log("0");
 var a = catme();
 console.log(a);
 // no .ejs required anymore
@@ -12,26 +14,46 @@ app.get("/", function(req,res){
     res.render("home.ejs");
     
 });
+const games = [
+    {title: "Run3", creator: "rudy", width: "455", height: "500", thumbnail: "run 3.webp", filename: "Run 3.swf"},
+    {title: "Dirty Ball", creator: "rudy", width: "455", height: "500" , thumbnail: "run 3.webp", filename: "Run 3.swf"},
+    {title: "Buggy Basket", creator: "rudy", width: "455", height: "500" , thumbnail: "run 3.webp", filename: "Run 3.swf"},
+    {title: "Gutter run", creator: "rudy", width: "455", height: "500", thumbnail: "run 3.webp", filename: "Run 3.swf"}];
+
 app.get("/gamelists", function(req, res){
-    //game list
-    const games = [
-        {title: "Fortnite", creator: "rudy"},
-        {title: "Dirty Ball", creator: "rudy"},
-        {title: "Buggy Basket", creator: "rudy"},
-        {title: "Gutter run", creator: "rudy"}];
+    games: games
     res.render("gamelists.ejs", {
         games : games,
     });
 });
-app.get("/game/:gtitle/:gcreator", function(req,res){
-    const title = req.params.gtitle;
-    const creator = req.params.gcreator;
+
+console.log("1")
+app.get("/add", function(req,res){
+    res.render("add.ejs",{});
+});
+ 
+app.post("/add", function(req,res){
+    var data = req.body;
+    games.push(data)
+    
+});
+app.get("/game/:title/:creator/:width/:height/:thumbnail/:filename", function(req,res){
+    const title = req.params.title;
+    const creator = req.params.creator;
+    const width = req.params.width;
+    const height = req.params.height;
+    const thumbnail = req.params.thumbnail;
+    const filename = req.params.filename
     res.render("game.ejs", {
     title: title, 
     creator: creator,
-    games:  games
+    width: width,
+    height: height,
+    thumbnail: thumbnail,
+    filename: filename
     }); 
 });
+console.log("4")
 //mines apni key is wrong one so fuk off u can try other links in this portion:
 //some funcs to remember
 //var data = JSON.parse(body)
@@ -46,7 +68,6 @@ app.get("/game/:gtitle/:gcreator", function(req,res){
 //        
 //    }
 //});
-
 
 
 //app.get("/pictures/:pgnumber", function(req, res){
@@ -79,6 +100,8 @@ app.get("/game/:gtitle/:gcreator", function(req,res){
 
 
 app.get("*", function(req, res){
-    res.send("Wrong Place for you to be here");
+   // res.send("404 Wrong Place for you to be here");
+   res.render("error.ejs", {});
 });
+console.log("5")
 app.listen(3000, () => console.log("Succesfull Attempt"));

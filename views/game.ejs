@@ -1,25 +1,24 @@
-<% include partials/header.ejs %>
+<%- include('./partials/header.ejs') %>  
 <%# lnl rfrence nt wrkin %>
-<body>  <body>
-    <link rel="stylesheet" href="style.css">
-    <style>
-      body{
-          padding-top: 65px;
-          padding-left: 20px;
+  <body>
+    <div id="game">
+      <h1>Alternative content</h1>
+      <p><a href="http://www.adobe.com/go/getflashplayer"><img src="http://www.adobe.com/images/shared/download_buttons/get_flash_player.gif" alt="Get Adobe Flash player" /></a></p>
+    </div>
+      <link rel="stylesheet" href="style.css">
+      <style>
+        body{
+            padding-top: 65px;
+            padding-left: 20px;
 
-      }
-      </style>
-    <% if (title == "Fortnite") { %>
-      <h1>Game: <%= title %> </h1>
-      <h2>Creator: <%= creator %></h2>
-      <h4>
-       This Game <%= title %> was designed by <%= creator %> is a pvp multiplayer featured game and a lot of commodities u see.
-      </h4>
-     <% } else{ %> 
-      <h4>
-        Error 404 This Game doesnot Exist
-      </h4>
+        }
+        </style>
 
-    <% } %>  
-  </body>
+    </body>
+      <head>
+      <script type="text/javascript" src="swf/swfobject.js"></script>
+      <script type="text/javascript">
+      swfobject.embedSWF("Games/<%title%>.swf", "game", "<%width%>", "<%height%>", "9.0.0", "expressInstall.swf");
+      </script>
+    </head>
 </html>
